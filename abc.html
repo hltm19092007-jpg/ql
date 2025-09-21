@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  
+  :root {
+    --rose: #ff5f9e;
+    --fuchsia: #a78bfa;
+  }
+
+  /* Nội dung chính: dễ đọc, mềm mại */
+  body {
+    font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+
+  /* Tiêu đề: thư pháp lãng mạn */
+  .h-serif {
+    font-family: 'Great Vibes', cursive;
+    letter-spacing: 0.03em;
+  }
+    /* Glowing animated background */
+    .animated-gradient{
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(255,255,255,.16), transparent 60%),
+        radial-gradient(800px 600px at 120% 10%, rgba(255,255,255,.12), transparent 60%),
+        linear-gradient(135deg, #ff5f9e, #f472b6, #a78bfa, #7c3aed);
+      background-size: 200% 200%;
+      animation: gradientShift 16s ease infinite;
+    }
+    @keyframes gradientShift{
+      0%{ background-position: 0% 50%; }
+      50%{ background-position: 100% 50%; }
+      100%{ background-position: 0% 50%; }
+    }
+
+    /* Card glow */
+    .card{
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .gradient-border{
+      position: relative;
+      border-radius: 20px;
+      isolation: isolate;
+    }
+    .gradient-border::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius: 22px;
+      background: conic-gradient(from 120deg, #ff80b5, #a78bfa, #f472b6, #ff80b5);
+      filter: blur(10px);
+      opacity: .55;
+      z-index:-1;
+    }
+
+    /* Floating hearts */
+    #heart-layer{ pointer-events:none; }
+    .heart{
+      position:absolute;
+      bottom:-40px;
+      color:#fff;
+      opacity:.95;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+      animation: floatUp linear forwards;
+      will-change: transform, opacity;
+      user-select: none;
+    }
+    @keyframes floatUp{
+      0%{ transform: translateY(0) scale(.8) rotate(0deg); opacity:0; }
+      10%{ opacity:1; }
+      90%{ opacity:1; }
+      100%{ transform: translateY(-120vh) scale(1.25) rotate(12deg); opacity:0; }
+    }
+
+    /* Firework sparkles */
+    .spark{
+      position:absolute;
+      width:8px; height:8px; border-radius:9999px;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.25));
+      box-shadow: 0 0 12px rgba(255,255,255,.85);
+    }
+
+    /* Typewriter */
+    .typewriter .tw-caret{
+      display:inline-block; width:.09em; background: currentColor; margin-left:2px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink{ 0%,50%{opacity:1;} 51%,100%{opacity:0;} }
+
+    /* Cute badge pulse */
+    .badge-pulse{ animation: pulseGlow 2.4s ease-in-out infinite; }
+    @keyframes pulseGlow{
+      0%,100%{ box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+      50%{ box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    }
+
+    /* Buttons */
+    .btn{ transition: transform .15s ease, filter .2s ease, background .2s ease; }
+    .btn:active{ transform: translateY(1px) scale(.98); }
+  </style>
+</head>
+<body class="animated-gradient min-h-screen relative overflow-x-hidden">
+
+  <!-- Floating hearts layer -->
+  <div id="heart-layer" class="absolute inset-0"></div>
+
+  <!-- Soft corner glows -->
+  <div class="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-rose-400/30 blur-3xl"></div>
+  <div class="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-fuchsia-400/30 blur-3xl"></div>
+
+  <main class="relative z-10">
+    <!-- Header badge -->
+    <div class="w-full pt-10 flex justify-center">
+      <div class="badge-pulse bg-white/20 text-white px-4 py-2 rounded-full backdrop-blur text-sm font-medium">
+        💞 Chào mừng em trở lại 💞
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="container mx-auto px-6 pt-8 md:pt-14">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="h-serif text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow">
+        Chào mừng em đã trở lại bên anh
+        </h1>
+        <p class="mt-4 text-white/90 text-lg md:text-xl">
+          Hôm nay là một ngày thật đặc biệt 💗
+        </p>
+      </div>
+
+      <!-- Love letter card -->
+      <div class="max-w-3xl mx-auto mt-8 md:mt-10 gradient-border">
+        <div class="card rounded-2xl p-6 md:p-8 text-white">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-xs uppercase tracking-[0.2em] text-white/80">Love Letter</div>
+            <div class="text-2xl" aria-hidden="true">💌</div>
+          </div>
+
+          <div class="typewriter text-lg md:text-xl leading-relaxed whitespace-pre-wrap">
+            <span id="tw-text"></span><span class="tw-caret"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="max-w-3xl mx-auto mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button id="btn-hearts" class="btn rounded-full px-6 py-3 bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white font-semibold shadow-lg hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-white/30">
+          Thả tim 💖
+        </button>
+        <button id="btn-fire" class="btn rounded-full px-6 py-3 bg-white/20 text-white font-semibold shadow-lg hover:bg-white/25 focus:outline-none focus:ring-4 focus:ring-white/30">
+          Pháo hoa ✨
+        </button>
+        <button id="btn-retype" class="btn rounded-full px-6 py-3 bg-white/10 text-white font-semibold shadow-lg hover:bg-white/15 focus:outline-none focus:ring-4 focus:ring-white/30">
+          Chạy lại chữ ⏱️
+        </button>
+      </div>
+
+      <p class="max-w-3xl mx-auto mt-10 text-center text-white/80 text-sm">
+        Mãi trân trọng và yêu em 💘
+      </p>
+    </section>
+  </main>
+
+<!-- ...existing code... -->
+<script>
+  // --- Cấu hình màu sắc ---
+  const heartColors = ['#fff', '#ffd1e5', '#ffe4f1', '#ffb3cf', '#fde68a'];
+  const fireworkColors = ['#ff80b5','#ff5f9e','#f472b6','#f0abfc','#a78bfa','#e879f9'];
+
+  // --- Lấy các phần tử ---
+  const heartLayer = document.getElementById('heart-layer');
+  const btnHearts = document.getElementById('btn-hearts');
+  const btnFire = document.getElementById('btn-fire');
+  const btnRetype = document.getElementById('btn-retype');
+  const twText = document.getElementById('tw-text');
+
+  // --- Hàm tiện ích ---
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  // --- HIỆU ỨNG THẢ TIM ---
+  function spawnHeartsFrom(x, y, count = 12) {
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.className = 'heart';
+      span.textContent = '❤';
+      span.style.zIndex = 1000;
+      const size = rand(18, 38);
+      span.style.fontSize = size + 'px';
+      span.style.color = pick(heartColors);
+
+      // Vị trí bắt đầu
+      span.style.left = (x - size / 2 + rand(-12, 12)) + 'px';
+      span.style.top = (y - size / 2 + rand(-8, 8)) + 'px';
+
+      // Hiệu ứng bay lên
+      const duration = rand(2.8, 4.2);
+      span.style.animationDuration = duration + 's';
+      span.style.transform = `translateY(0) scale(${rand(0.9,1.2)}) rotate(${rand(-12,12)}deg)`;
+
+      heartLayer.appendChild(span);
+
+      // Xóa sau khi kết thúc
+      span.addEventListener('animationend', () => span.remove());
+      setTimeout(() => span.remove(), (duration + 0.5) * 1000);
+    }
+  }
+
+  // --- HIỆU ỨNG PHÁO HOA ---
+  function fireworkAt(x, y) {
+    const n = 18;
+    for (let i = 0; i < n; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'spark';
+      sp.style.left = (x - 4) + 'px';
+      sp.style.top = (y - 4) + 'px';
+      sp.style.background = `radial-gradient(circle at 30% 30%, #fff, ${pick(fireworkColors)})`;
+      heartLayer.appendChild(sp);
+
+      const angle = (i / n) * Math.PI * 2 + rand(-0.12, 0.12);
+      const dist = rand(80, 140);
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist;
+
+      // Animate
+      const anim = sp.animate([
+        { transform: 'translate(0,0) scale(0.7)', opacity: 1 },
+        { transform: `translate(${dx}px, ${dy}px) scale(0)`, opacity: 0 }
+      ], { duration: 900, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'forwards' });
+
+      anim.onfinish = () => sp.remove();
+      setTimeout(() => sp.remove(), 1000);
+    }
+  }
+
+  // --- Pháo hoa nổ khắp màn hình ---
+  function fireworksEverywhere(times = 7) {
+    for (let i = 0; i < times; i++) {
+      setTimeout(() => {
+        const x = rand(window.innerWidth * 0.12, window.innerWidth * 0.88);
+        const y = rand(window.innerHeight * 0.18, window.innerHeight * 0.7);
+        fireworkAt(x, y);
+      }, i * 220);
+    }
+  }
+
+  // --- Typewriter giữ nguyên ---
+  const loveMessage =
+'Em yêu à, anh muốn nói với em rằng anh thật sự biết ơn khi em đã quay trở lại, tiếp tục đồng hành cùng anh trong hành trình này, có lẽ anh sẽ chẳng bao giờ đủ lời để diễn tả được niềm hạnh phúc mà anh cảm nhận được khi em ở bên, anh luôn trân trọng điều đó và từng khoảnh khắc nhỏ bé anh có với em đều là vô giá, khoảng thời gian qua anh đã dành rất nhiều để nhìn lại bản thân, để thay đổi từ suy nghĩ, cách cư xử cho đến cách kiểm soát cảm xúc của mình, anh muốn trở thành một phiên bản tốt hơn không chỉ cho riêng anh mà còn vì em – người con gái mà anh yêu thương hơn tất cả, anh biết rằng trước đây có lúc anh chưa đủ tốt, có thể đã khiến em cảm thấy thiệt thòi, anh hứa với em rằng anh sẽ không bao giờ để em phải chịu sự tổn thương hay thiệt thòi nữa, anh muốn là chỗ dựa vững chắc nhất, là bờ vai ấm áp nhất cho em dù bất cứ chuyện gì xảy ra, em chính là món quà tuyệt vời nhất mà cuộc đời đã ban tặng cho anh, anh yêu em không chỉ vì em mà còn vì em đã khiến cuộc sống của anh trở nên ý nghĩa hơn bao giờ hết, anh yêu em Quỳnh Anh💓💞💖💝';
+  let typing = false;
+  function typeWriter(text) {
+    typing = true;
+    twText.textContent = '';
+    let i = 0;
+    function step() {
+      if (!typing) return;
+      if (i < text.length) {
+        twText.textContent += text[i];
+        const ch = text[i];
+        i++;
+        let delay = 24;
+        if (ch === ',' ) delay = 220;
+        if (ch === '.' || ch === '!' || ch === '?' || ch === '…') delay = 300;
+        if (ch === '\n') delay = 160;
+        setTimeout(step, delay);
+      } else {
+        typing = false;
+      }
+    }
+    step();
+  }
+  function restartTyping() {
+    typing = false;
+    requestAnimationFrame(() => typeWriter(loveMessage));
+  }
+
+  // --- Sự kiện nút ---
+  btnHearts.addEventListener('click', (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + window.scrollY + rect.height / 2;
+    spawnHeartsFrom(x, y, 16);
+  });
+
+  btnFire.addEventListener('click', () => {
+    fireworksEverywhere(8);
+  });
+
+  btnRetype.addEventListener('click', () => {
+    restartTyping();
+    fireworkAt(window.innerWidth / 2, window.innerHeight * 0.18 + window.scrollY);
+  });
+
+  // --- Khởi động ---
+  window.addEventListener('DOMContentLoaded', () => {
+    spawnHeartsFrom(window.innerWidth / 2, window.innerHeight * 0.8, 10);
+    typeWriter(loveMessage);
+  });
+</script>
+<!-- ...existing code... -->
+</html>
